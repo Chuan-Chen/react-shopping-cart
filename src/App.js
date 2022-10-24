@@ -1,8 +1,13 @@
+import Hamburger from "./Hamburger";
+import "./App.css";
+
 export default function App(){
 
     return (
     <>
-        <div>hi</div>
+        <div>
+            <Hamburger></Hamburger>
+        </div>
     </>
     )
 }
