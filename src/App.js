@@ -14,13 +14,15 @@ export default function App(){
         <div>
             <Header></Header>
             <div>
-                <Router>
+                
+                           
                     <Routes>
+                        <Route index element = {<Home/>}></Route>
                         <Route path = "home" element = {<Home/>}></Route>
-                        <Route path = "shop" element = {<Home/>}></Route>
-                        <Route path = "about" element = {<Shop/>}></Route>
+                        <Route path = "shop" element = {<Shop/>}></Route>
+                        <Route path = "about" element = {<About/>}></Route>
                     </Routes>
-                </Router>
+                
             </div>
             <Footer></Footer>
         </div>
