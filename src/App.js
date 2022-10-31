@@ -1,6 +1,6 @@
 import Header from "./Header/Header";
 import Footer from "./Footer.js";
-import { BrowserRouter as Routes, Route, Link } from 'react-router-dom';
+import {Routes, Route, Link } from 'react-router-dom';
 import "./App.css";
 import Shop from "./Shop";
 import Home from "./Home";
