@@ -5,14 +5,16 @@ import "./App.css";
 import Shop from "./Shop";
 import Home from "./Home";
 import About from "./About";
-
+import shoppingCart from "./shoppingCart"
 
 export default function App(){
     
     return (
     <>
         <div>
-            <Header></Header>
+            <Header>
+                
+            </Header>
             <div>
       
                     <Routes>
