@@ -1,12 +1,12 @@
 import "./Headers.css";
 import { Link } from 'react-router-dom';
-import shoppingCart from '../shoppingCart'
+import ShoppingCart from '../shoppingCart'
 export default function Header(props){
 
 
     return (
         <div className = "header">
-            <shoppingCart></shoppingCart>
+            <ShoppingCart></ShoppingCart>
             <div className = "banner">
             
                     <Link to = "/home"><div className = "btn">Home</div></Link>

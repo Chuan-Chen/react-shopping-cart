@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState } from 'react';
 
-export default function shoppingCart(props){
+export default function ShoppingCart(props){
     const [count, setCount] = useState(0);
     const [showCart, setShowCart] = useState(false);
 
