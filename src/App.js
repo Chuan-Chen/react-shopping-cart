@@ -1,31 +1,11 @@
-import Header from "./Header/Header";
-import Footer from "./Footer.js";
-import {Routes, Route, Link } from 'react-router-dom';
-import "./App.css";
-import Shop from "./Shop";
-import Home from "./Home";
-import About from "./About";
-import shoppingCart from "./shoppingCart"
 
+import "./App.css";
+import Menu from "./component/Menu/Menu.js";
 export default function App(){
     
     return (
     <>
-        <div>
-            <Header>
-                
-            </Header>
-            <div>
-      
-                    <Routes>
-                        <Route index element = {<Home/>}></Route>
-                        <Route path = "home" element = {<Home/>}></Route>
-                        <Route path = "shop" element = {<Shop/>}></Route>
-                        <Route path = "about" element = {<About/>}></Route>
-                    </Routes>
-            </div>
-            <Footer></Footer>
-        </div>
+        <Menu></Menu>
     </>
     )
 }
