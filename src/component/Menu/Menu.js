@@ -1,16 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
+import styled from 'styled-components';
 
-const divStyle = {
-    backgroundColor: 'blue',
-    height: '100px',
-    width: '100px',
-  };
+const MenuStyle = styled.div`
+    height: ${props => props.height ? '64px' : '100px'};
+    width: ${props => props.width ? '64px' : '100px'};
+    background-color:blue;
+    cursor: pointer;
+    &:hover{
+        background-color: black;
+    }
+`;
+
+
 
 export default function Menu(){
 
+    const [click, setClick] = useState(1)
+
     return (
-        <div>
-            <div style = {divStyle}></div>
-        </div>
+        <MenuStyle height={click.toString()} width={click.toString()} onClick={()=>{setClick(!click)}}>
+            
+        </MenuStyle>
     );
 }

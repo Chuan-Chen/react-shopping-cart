@@ -2,21 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { createGlobalStyle } from 'styled-components';
+import GlobalStyle from './globalStyles';
 
-const gStyle = createGlobalStyle`
-  body, html, #root{
-    height: 100%;
-    margin: 0px;
-  }
-`;
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <App/>
-      </BrowserRouter> 
-    </React.StrictMode>
-    
+        <React.StrictMode>
+          <BrowserRouter>
+            <GlobalStyle/>
+            <App/>
+          </BrowserRouter> 
+        </React.StrictMode>
 );
