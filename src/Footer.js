@@ -1,6 +1,5 @@
 import React from "react";
-import { StyledComponent } from "styled-components";
-import "./Footer.css";
+import styled from "styled-components"
 
 const FooterStyle = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
@@ -26,18 +25,20 @@ const FooterA = styled.a`
     color: white;
     text-shadow: 0 0 10px white;
     &:hover {
-        
+        color: rgb(169, 169, 169)
     }
 `;
+
+
 
 export default class Footer extends React.Component{
     render(){
         return(
-            <div className = "footer">
+            <FooterStyle>
                 <div>
-                    Copyright © 2022 <a href = "https://github.com/Chuan-Chen">Whykari</a>
+                    Copyright © 2022 <FooterA href = "https://github.com/Chuan-Chen">Whykari</FooterA>
                 </div>
-            </div>
+            </FooterStyle>
         )
     }
 }
