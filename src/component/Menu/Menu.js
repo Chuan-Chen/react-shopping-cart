@@ -15,10 +15,10 @@ const MenuStyle = styled.div`
 
 export default function Menu(){
 
-    const [click, setClick] = useState(1)
+    const [click, setClick] = useState("true")
 
     return (
-        <MenuStyle height={click.toString()} width={click.toString()} onClick={()=>{setClick(!click)}}>
+        <MenuStyle height={click} width={click} onClick={()=>{click ? setClick("true") : setClick("false")}}>
             
         </MenuStyle>
     );
