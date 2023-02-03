@@ -1,11 +1,10 @@
+import React from 'react';
 
 const divStyle = {
     backgroundColor: 'blue',
     height: '100px',
     width: '100px',
-    backgroundImage: "url(" + "../Images/Hamburger_Icon.png" + ")"
   };
-
 
 export default function Menu(){
 

@@ -2,6 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { createGlobalStyle } from 'styled-components';
+
+const gStyle = createGlobalStyle`
+  body, html, #root{
+    height: 100%;
+    margin: 0px;
+  }
+`;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -10,4 +18,5 @@ root.render(
         <App/>
       </BrowserRouter> 
     </React.StrictMode>
+    
 );
