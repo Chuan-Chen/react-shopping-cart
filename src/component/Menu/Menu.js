@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const MenuStyle = styled.div`
-    height: ${props => props.height ? '64px' : '100px'};
-    width: ${props => props.width ? '64px' : '100px'};
+    
+    height: ${props => props.height ? props.height + 'px': '100vh'};
+    width: ${props => props.width + 'px'};
     background-color:blue;
     cursor: pointer;
     &:hover{
@@ -15,10 +16,16 @@ const MenuStyle = styled.div`
 
 export default function Menu(){
 
-    const [click, setClick] = useState("true")
+    const [height, setHeight] = useState(100)
+    const [width, setWidth] = useState(100)
+
+    function clickHandler(){
+        height === 100 ? setHeight(60) : setHeight(100)
+        width === 100 ? setWidth(60) : setWidth(100)
+    }
 
     return (
-        <MenuStyle height={click} width={click} onClick={()=>{click ? setClick("true") : setClick("false")}}>
+        <MenuStyle height = {height} width={width} onClick={clickHandler}>
             
         </MenuStyle>
     );
