@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import MenuExtend from './MenuExtend';
 
 const MenuStyle = styled.div`
     
-    height: ${props => props.height ? props.height + 'px': '100vh'};
-    width: ${props => props.width + 'px'};
-    background-color:blue;
+    height: ${props => props.height};
+    width: ${props => props.width};
+    background-color:grey;
     cursor: pointer;
     &:hover{
-        background-color: black;
+        background-color: lightblue;
     }
 `;
 
@@ -16,17 +17,21 @@ const MenuStyle = styled.div`
 
 export default function Menu(){
 
-    const [height, setHeight] = useState(100)
-    const [width, setWidth] = useState(100)
+    const [height, setHeight] = useState(3)
+    const [width, setWidth] = useState(3)
+    const [display, setDisplay] = useState('none')
+
+
 
     function clickHandler(){
-        height === 100 ? setHeight(60) : setHeight(100)
-        width === 100 ? setWidth(60) : setWidth(100)
+        height === 100 ? setHeight(3) : setHeight(100)
+        width === 3 ? setWidth(20) : setWidth(3)
+        display === 'none' ? setDisplay('block') : setDisplay('none')
     }
 
     return (
-        <MenuStyle height = {height} width={width} onClick={clickHandler}>
-            
+        <MenuStyle height = {height !== 100 ? height + "rem" : height + "vh"} width={width + "rem"} onClick={clickHandler}>
+            <MenuExtend display = {display}></MenuExtend>
         </MenuStyle>
     );
 }
