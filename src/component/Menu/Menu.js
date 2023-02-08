@@ -11,6 +11,7 @@ const MenuStyle = styled.div`
     &:hover{
         background-color: lightblue;
     }
+    border-radius: 6px;
 `;
 
 
