@@ -27,10 +27,13 @@ export default function App(){
         console.log(ItemCount);
     }
 
+
+    //https://fakeapi.platzi.com/en/rest/products
+
     return (
         <Main>
             <Menu></Menu>
-            <ShoppingCart ItemCount = {ItemCount} PriceCount = {0}></ShoppingCart>
+            <ShoppingCart></ShoppingCart>
             <ItemCard updateItems = {changeItemCount}></ItemCard>
             <Footer></Footer>
         </Main>

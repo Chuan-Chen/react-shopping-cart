@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux"
 import styled from "styled-components"
 
 const Price = styled.div`
@@ -7,11 +8,11 @@ const Price = styled.div`
 
 `
 
-export default function PriceCounter(props){
+export default function PriceCounter(){
 
     return (
     <Price>
-        {props.Price ? props.Price : ' '}
+        ${useSelector((state) => state.price.value)}
     </Price>
     )
 }

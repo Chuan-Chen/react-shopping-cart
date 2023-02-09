@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setAmount, setCount } from "../../app/priceSlice";
 
 const Card = styled.div`
+    position: relative;
     height: 300px;
     width: 300px;
     background-color: #8EA4D2;
 `
 
 const CardButtons = styled.div`
+    position: absolute;
+    left: ${props => props.left ? props.left: 'none'};
+    right: ${props => props.right};
+    bottom: 0px; 
     display: flex;
     user-select: none;
     justify-content: center;
@@ -23,24 +30,15 @@ const CardButtons = styled.div`
     }
 `
 
-export default function ItemCard(props){
+export default function ItemCard({Price, ItemCount, Title}){
 
-    const [cost, setCost] = useState(0);
-    const [ItemCount, setItemCount] = useState(0);
-
-    function ClickHandler(sign){
-        setItemCount(ItemCount + (sign === "add" ? props.updateItems(1) : props.updateItems(-1)));
-    }
-    
-    useEffect(()=>{
-        console.log(ItemCount)
-    },[])
+    const dispatch = useDispatch();
 
     return (
         <div>
             <Card>
-                <CardButtons onClick={()=>{ClickHandler("add")}}>+</CardButtons>
-                <CardButtons onClick={()=>{ClickHandler("sub")}}>-</CardButtons>
+                <CardButtons left = {0} onClick={()=>{dispatch(setAmount(10)); dispatch(setCount(+1))}}>+</CardButtons>
+                <CardButtons right = {0} onClick={()=>{dispatch(setAmount(-10)); dispatch(setCount(-1))}}>-</CardButtons>
             </Card>
         </div>
     )

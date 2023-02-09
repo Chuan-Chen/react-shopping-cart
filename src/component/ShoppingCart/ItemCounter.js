@@ -1,5 +1,6 @@
 
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 
@@ -9,10 +10,10 @@ const Items = styled.div`
     bottom: 0px;
 `
 
-export default function ItemCouter(props){
+export default function ItemCouter(){
     return (
         <Items>
-            {props.Items ? props.Items : ' '}
+            {useSelector((state) => state.price.count)}
         </Items>
     )
 }
