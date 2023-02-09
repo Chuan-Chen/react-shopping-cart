@@ -1,21 +1,29 @@
 import { useEffect, useState } from "react"
 import styled from "styled-components";
-
+import React from "react";
 
 const Card = styled.div`
     height: 300px;
-    width: 100px;
+    width: 300px;
     background-color: lightblue;
 `
 
 const CardButtons = styled.div`
+    display: flex;
+    user-select: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     height: 50px;
     width: 50px;
     background-color: pink;
     border-color: black;
+    &:hover{
+        background-color: grey;
+    }
 `
 
-export default function ItemCard(){
+export default function ItemCard(props){
 
     const [cost, setCost] = useState(0);
     const [ItemCount, setItemCount] = useState(0);

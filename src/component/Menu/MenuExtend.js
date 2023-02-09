@@ -2,9 +2,11 @@ import styled from "styled-components"
 import React, { useState } from "react"
 
 const MenuExtended = styled.div`
+    position: absolute;
     display: ${props => props.display};
     height: 100%;
     width: 100%;
+    z-index: 2;
 
 `
 
