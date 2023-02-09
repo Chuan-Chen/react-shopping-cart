@@ -5,7 +5,7 @@ import React from "react";
 const Card = styled.div`
     height: 300px;
     width: 300px;
-    background-color: lightblue;
+    background-color: #8EA4D2;
 `
 
 const CardButtons = styled.div`
@@ -29,8 +29,7 @@ export default function ItemCard(props){
     const [ItemCount, setItemCount] = useState(0);
 
     function ClickHandler(sign){
-        setItemCount(ItemCount + (sign === "add" ? 1 : -1));
-        console.log(ItemCount)
+        setItemCount(ItemCount + (sign === "add" ? props.updateItems(1) : props.updateItems(-1)));
     }
     
     useEffect(()=>{
