@@ -4,6 +4,7 @@ import styled from "styled-components"
 import Footer from "./Footer"
 import ShoppingCart from "./component/ShoppingCart/ShoppingCart.js";
 import ItemCard from "./component/ItemCard/ItemCard.js";
+import Carousel from "./component/ImageCarousel/Carousel.js";
 
 const Main = styled.div`
     display: flex;
@@ -35,6 +36,7 @@ export default function App(){
             <Menu></Menu>
             <ShoppingCart></ShoppingCart>
             <ItemCard updateItems = {changeItemCount}></ItemCard>
+            <Carousel images = {[]}></Carousel>
             <Footer></Footer>
         </Main>
     )

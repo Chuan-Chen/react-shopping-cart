@@ -36,7 +36,7 @@ export default class Footer extends React.Component{
         return(
             <FooterStyle>
                 <div>
-                    Copyright © 2022 <FooterA href = "https://github.com/Chuan-Chen">Whykari</FooterA>
+                    Copyright © 2022 <FooterA href = "https://github.com/Chuan-Chen">Chuan Chen</FooterA>
                 </div>
             </FooterStyle>
         )
