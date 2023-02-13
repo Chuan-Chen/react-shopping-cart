@@ -1,10 +1,12 @@
 import Menu from "./component/Menu/Menu.js";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components"
 import Footer from "./Footer"
 import ShoppingCart from "./component/ShoppingCart/ShoppingCart.js";
 import ItemCard from "./component/ItemCard/ItemCard.js";
 import Carousel from "./component/ImageCarousel/Carousel.js";
+import loadData from "./loadData.js";
+
 
 const Main = styled.div`
     display: flex;
@@ -21,6 +23,10 @@ const Main = styled.div`
 export default function App(){
 
     const [ItemCount, setItemCount] = useState(0);
+    const [dataLoaded, setDataLoaded] = useState(false);
+    const [dataError, setDataError] = useState(null);
+    const [data, setData] = useState([]);
+
 
     function changeItemCount(value){
         //might need to double check this logic
@@ -28,6 +34,25 @@ export default function App(){
         console.log(ItemCount);
     }
 
+    useEffect(() => {
+       console.log( getProducts() );
+    }, []); 
+
+    async function getProducts(){
+        const result = loadData();
+        result.then(
+        (res) => {
+            setData(res);
+            setDataLoaded(true);
+            setDataError(null);
+        }, 
+        (err) => {
+            setData([]);
+            setDataLoaded(false);
+            setDataError(err);
+        })
+        return result;
+    }
 
     //https://fakeapi.platzi.com/en/rest/products
 
@@ -36,7 +61,8 @@ export default function App(){
             <Menu></Menu>
             <ShoppingCart></ShoppingCart>
             <ItemCard updateItems = {changeItemCount}></ItemCard>
-            <Carousel images = {[]}></Carousel>
+            <Carousel data = {data} dataLoaded = {dataLoaded} dataError = {dataError} itemNo = {0}></Carousel>
+            <Carousel data = {data} dataLoaded = {dataLoaded} dataError = {dataError} itemNo = {2}></Carousel>
             <Footer></Footer>
         </Main>
     )
