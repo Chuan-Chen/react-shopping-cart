@@ -10,6 +10,7 @@ import loadData from "./loadData.js";
 
 const Main = styled.div`
     display: flex;
+    gap: 15px;
     height: 100%;
 `;
 /**
@@ -22,37 +23,16 @@ const Main = styled.div`
 
 export default function App(){
 
-    const [ItemCount, setItemCount] = useState(0);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [dataError, setDataError] = useState(null);
     const [data, setData] = useState([]);
 
-
-    function changeItemCount(value){
-        //might need to double check this logic
-        ItemCount === 0 && value === -1 ? setItemCount(0) : setItemCount(ItemCount + value);
-        console.log(ItemCount);
-    }
-
     useEffect(() => {
-       console.log( getProducts() );
+        const getData = async () => { const tempdata = await loadData(); setData(tempdata) }
+        console.log(data)
     }, []); 
 
-    async function getProducts(){
-        const result = loadData();
-        result.then(
-        (res) => {
-            setData(res);
-            setDataLoaded(true);
-            setDataError(null);
-        }, 
-        (err) => {
-            setData([]);
-            setDataLoaded(false);
-            setDataError(err);
-        })
-        return result;
-    }
+
 
     //https://fakeapi.platzi.com/en/rest/products
 
@@ -60,9 +40,8 @@ export default function App(){
         <Main>
             <Menu></Menu>
             <ShoppingCart></ShoppingCart>
-            <ItemCard updateItems = {changeItemCount}></ItemCard>
-            <Carousel data = {data} dataLoaded = {dataLoaded} dataError = {dataError} itemNo = {0}></Carousel>
-            <Carousel data = {data} dataLoaded = {dataLoaded} dataError = {dataError} itemNo = {2}></Carousel>
+            <ItemCard data = {data} itemNo = {0} dataLoaded = {dataLoaded} dataError = {dataError}></ItemCard>
+            <ItemCard data = {data} itemNo = {1}></ItemCard>
             <Footer></Footer>
         </Main>
     )

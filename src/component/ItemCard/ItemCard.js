@@ -3,6 +3,7 @@ import styled from "styled-components";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setAmount, setCount } from "../../app/priceSlice";
+import Carousel from "../ImageCarousel/Carousel";
 
 const Card = styled.div`
     position: relative;
@@ -30,13 +31,14 @@ const CardButtons = styled.div`
     }
 `
 
-export default function ItemCard({Price, ItemCount, Title}){
+export default function ItemCard({data, dataLoaded, dataError, itemNo}){
 
     const dispatch = useDispatch();
 
     return (
         <div>
             <Card>
+                <Carousel data = {data} dataLoaded = {dataLoaded} dataError = {dataError} itemNo = {itemNo}></Carousel>
                 <CardButtons left = {0} onClick={()=>{dispatch(setAmount(10)); dispatch(setCount(+1))}}>+</CardButtons>
                 <CardButtons right = {0} onClick={()=>{dispatch(setAmount(-10)); dispatch(setCount(-1))}}>-</CardButtons>
             </Card>
