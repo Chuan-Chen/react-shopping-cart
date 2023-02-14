@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import styled from "styled-components";
 
 
@@ -20,32 +19,16 @@ const Img = styled.img`
 `
 
 
-export default function Carousel({data, dataLoaded, dataError, itemNo}){
-    const [images, setImages] = useState([])
-
-    useEffect(()=>{
-        if(dataLoaded){
-            setImages(data[itemNo].images)
-        }
-    }, [dataLoaded, data, itemNo])
-
-    const createImages = images.map((img, index) => {
-            return <Img key = {index} source = {img} zInd = {index}></Img>
+export default function Carousel({data}){
+    const createImages = data.map((img, index) => {
+            return <Img key = {index} source = {img}></Img>
     })
 
+    return(
+        <CarouselWrapper>
+            {createImages}
+        </CarouselWrapper>
+    )
 
-
-//<img key = {i} src = {images[i++]} style = {{zIndex: zIndex}} alt = {"placeholder"}></img>
-    if(dataError){
-        return <div>Error: {dataError}</div>
-    }else if(!dataLoaded){
-        return <div>loading...</div>
-    }else{
-        return(
-            <CarouselWrapper>
-                {createImages}
-            </CarouselWrapper>
-        )
-    }
 
 }

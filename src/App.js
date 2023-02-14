@@ -4,6 +4,9 @@ import styled from "styled-components"
 import Footer from "./Footer"
 import ShoppingCart from "./component/ShoppingCart/ShoppingCart.js";
 import ItemCard from "./component/ItemCard/ItemCard.js";
+import Nav from "./component/NavBar/Nav.js"
+import MainPage from "./component/Pages/MainPage.js";
+
 
 const url = 'https://api.escuelajs.co/api/v1/products';
 
@@ -27,18 +30,18 @@ export default function App(){
     const [dataError, setDataError] = useState(null);
     const [data, setData] = useState([]);
 
+
     useEffect(() => {
-        fetchData()
-        
+        fetchData();
     }, []); 
 
     const fetchData = ()=>{
         fetch(url).then((res) => {
             res.json().then(
             result => {
+                setData(result);
                 setDataLoaded(true);
                 setDataError(null);
-                setData(result);
                 console.log(result)
             }, 
             error => {
@@ -47,17 +50,24 @@ export default function App(){
             })
         })
     }
-
+    /**
+     * <ShoppingCart></ShoppingCart>
+                <ItemCard data = {data} itemNo = {Math.floor(Math.random() * 100)}></ItemCard>
+                <ItemCard data = {data} itemNo = {Math.floor(Math.random() * 100)}></ItemCard>
+                
+     */
 
     //https://fakeapi.platzi.com/en/rest/products
-
-    return (
-        <Main>
-            <Menu></Menu>
-            <ShoppingCart></ShoppingCart>
-            <ItemCard data = {data} itemNo = {0} dataLoaded = {dataLoaded} dataError = {dataError}></ItemCard>
-            <ItemCard data = {data} itemNo = {1} dataLoaded = {dataLoaded} dataError = {dataError}></ItemCard>
-            <Footer></Footer>
-        </Main>
-    )
+    if(dataError){
+        return <div>Error: {dataError}</div>
+    }else if(!dataLoaded){
+        return <div>Loading Data...</div>
+    }else {
+        return (
+            <Main>
+                <MainPage></MainPage>
+                <Footer></Footer>
+            </Main>
+        )
+    }
 }

@@ -31,30 +31,32 @@ const CardButtons = styled.div`
     }
 `
 
-export default function ItemCard({data, dataLoaded, dataError, itemNo}){
+export default function ItemCard({data}){
     const [counter, setCounter] = useState(0);
     const [title, setTitle] = useState("");
     const [price, setPrice] = useState(0);
+    const [randomItemID, setRandomItemID] = useState(randomID());
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        if(dataLoaded){
-            setTitle(data[itemNo].title);
-            setPrice(data[itemNo].price)
-        }
-    },[data, dataLoaded, itemNo])
+        setTitle(data[randomItemID].title);
+        setPrice(data[randomItemID].price)
+    }, [data, randomItemID])
 
     function clickHandler(count){
-        dispatch(setAmount(data[itemNo].price * count)); 
+        dispatch(setAmount(data[randomItemID].price * count)); 
         dispatch(setCount(count)); 
         setCounter(counter+count);
     }
 
+    function randomID(){
+        return Math.floor(Math.random() * 100);
+    }
 
     return (
         <div>
             <Card>
-                <Carousel data = {data} dataLoaded = {dataLoaded} dataError = {dataError} itemNo = {itemNo}></Carousel>
+                <Carousel data = {data[randomItemID].images}></Carousel>
                 <div>{counter} {title} ${price} </div>
                 <CardButtons left = {0} onClick={()=>{clickHandler(1)}}>+</CardButtons>
                 <CardButtons right = {0} onClick={()=>{clickHandler(-1)}}>-</CardButtons>
