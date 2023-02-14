@@ -27,7 +27,7 @@ export default function Carousel({data, dataLoaded, dataError, itemNo}){
         if(dataLoaded){
             setImages(data[itemNo].images)
         }
-    }, [dataLoaded, data])
+    }, [dataLoaded, data, itemNo])
 
     const createImages = images.map((img, index) => {
             return <Img key = {index} source = {img} zInd = {index}></Img>

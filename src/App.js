@@ -4,8 +4,8 @@ import styled from "styled-components"
 import Footer from "./Footer"
 import ShoppingCart from "./component/ShoppingCart/ShoppingCart.js";
 import ItemCard from "./component/ItemCard/ItemCard.js";
-import Carousel from "./component/ImageCarousel/Carousel.js";
-import loadData from "./loadData.js";
+
+const url = 'https://api.escuelajs.co/api/v1/products';
 
 
 const Main = styled.div`
@@ -28,10 +28,25 @@ export default function App(){
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        const getData = async () => { const tempdata = await loadData(); setData(tempdata) }
-        console.log(data)
+        fetchData()
+        
     }, []); 
 
+    const fetchData = ()=>{
+        fetch(url).then((res) => {
+            res.json().then(
+            result => {
+                setDataLoaded(true);
+                setDataError(null);
+                setData(result);
+                console.log(result)
+            }, 
+            error => {
+                setDataLoaded(false);
+                setDataError(error);
+            })
+        })
+    }
 
 
     //https://fakeapi.platzi.com/en/rest/products
@@ -41,7 +56,7 @@ export default function App(){
             <Menu></Menu>
             <ShoppingCart></ShoppingCart>
             <ItemCard data = {data} itemNo = {0} dataLoaded = {dataLoaded} dataError = {dataError}></ItemCard>
-            <ItemCard data = {data} itemNo = {1}></ItemCard>
+            <ItemCard data = {data} itemNo = {1} dataLoaded = {dataLoaded} dataError = {dataError}></ItemCard>
             <Footer></Footer>
         </Main>
     )
