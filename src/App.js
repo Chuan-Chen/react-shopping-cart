@@ -6,7 +6,7 @@ import ShoppingCart from "./component/ShoppingCart/ShoppingCart.js";
 import ItemCard from "./component/ItemCard/ItemCard.js";
 import Nav from "./component/NavBar/Nav.js"
 import MainPage from "./component/Pages/MainPage.js";
-
+import TestPage from "./component/Pages/testPage.js";
 
 const url = 'https://api.escuelajs.co/api/v1/products';
 
@@ -65,7 +65,7 @@ export default function App(){
     }else {
         return (
             <Main>
-                <MainPage></MainPage>
+                <TestPage></TestPage>
                 <Footer></Footer>
             </Main>
         )
